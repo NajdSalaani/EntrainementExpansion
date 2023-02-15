@@ -49,16 +49,42 @@ int Next; // numéro du prochain trésor du joueur
 		for(int i = 0; i<4 ; i++){
 			PremiereTuile[i].tileN = 1; //Haut
 		}
-		//initialisation des bords du plateaux
 		for(int i = 13; i<16 ; i++){
 			PremiereTuile[i].tileS = 1; //Bas
 		}
 		for(int i = 3; i<16 ; i+4){
-			PremiereTuile[i].tileW = 1; //Droit
+			PremiereTuile[i].tileE = 1; //Droit
 		}
 		for(int i = 0; i<14 ; i+4){
-			PremiereTuile[i].tileE = 1; //Gauche
+			PremiereTuile[i].tileW = 1; //Gauche
 		}
+		
+		//initialisation du reste
+		//Bas
+		PremiereTuile[0].tileS = 1;
+		PremiereTuile[1].tileS = 1;
+		PremiereTuile[4].tileS = 1;
+		PremiereTuile[7].tileS = 1;
+		PremiereTuile[9].tileS = 1;
+		PremiereTuile[10].tileS = 1;
+		//Haut
+		PremiereTuile[4].tileN = 1;
+		PremiereTuile[8].tileN = 1;
+		PremiereTuile[9].tileN = 1;
+		PremiereTuile[11].tileN = 1;
+		PremiereTuile[12].tileN = 1;
+		PremiereTuile[15].tileN = 1;
+		//Droite
+		PremiereTuile[2].tileE = 1;
+		PremiereTuile[5].tileE = 1;
+		PremiereTuile[6].tileE = 1;
+		PremiereTuile[9].tileE = 1;
+		//Gauche
+		PremiereTuile[3].tileW = 1;
+		PremiereTuile[5].tileW = 1;
+		PremiereTuile[6].tileW = 1;
+		PremiereTuile[9].tileW = 1;
+		PremiereTuile[13].tileW = 1;
 	}
 	
 	
