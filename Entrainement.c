@@ -24,3 +24,12 @@ t_tile* p_lab; //Pointeur vers la première tuile du labyrinthe
 int playerX,playerY; //coordonnées du joueur (nous/notre bot)
 int Next, // numéro du prochain trésor du joueur
 } t_lab;
+
+
+/* Fonction de création du Labyrinthe 
+	Cette fonction créer et initialise un labyrinthe 6*6 
+	Elle renvoie l'adresse de la première tuile du labyrinthe 
+*/
+	t_tile* CreationLab(){
+	
+	}
