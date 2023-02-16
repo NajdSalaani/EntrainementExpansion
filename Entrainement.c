@@ -30,7 +30,43 @@ int playerX,playerY; //coordonnées du joueur (nous/notre bot)
 int Next; // numéro du prochain trésor du joueur
 } t_lab;
 
+//Fonctions de verification d'un passage
 
+//Passage Droit Si la fonction renvoie 1 le passage droit existe sinon 0
+int PassageDroit(int i , t_tile p_lab[16]){
+	if( p_lab[i].tileE == 0 && p_lab[i+1].tileW == 0){
+	return 1;
+	}
+	return 0;
+
+}
+
+//Passage Gauche Si la fonction renvoie 1 le passage gauche existe sinon 0
+int PassageGauche(int i , t_tile p_lab[16]){
+	if( p_lab[i].tileW == 0 && p_lab[i-1].tileE == 0){
+	return 1;
+	}
+	return 0;
+
+}
+
+//Passage Haut Si la fonction renvoie 1 le passage Haut existe sinon 0
+int PassageHaut(int i , t_tile p_lab[16]){
+	if( p_lab[i].tileN == 0 && p_lab[i-4].tileS == 0){
+	return 1;
+	}
+	return 0;
+
+}
+
+//Passage Bas Si la fonction renvoie 1 le passage Bas existe sinon 0
+int PassageBas(int i , t_tile p_lab[16]){
+	if( p_lab[i].tileS == 0 && p_lab[i+4].tileN == 0){
+	return 1;
+	}
+	return 0;
+
+}
 
 		
 		
@@ -38,9 +74,14 @@ int Next; // numéro du prochain trésor du joueur
 
 int main(){
 
-//Creation et initialisation du labyrinthe ( ce peut être une copie du labyrinthe pour ne pas le perdre lors de l'expansion
-t_lab Labyrinthe;
-// initialisation des tiles D'abord tout à zéro puis placement trésor etc
+	//Creation et initialisation du labyrinthe ( ce peut être une copie du labyrinthe pour ne pas le perdre lors de l'expansion)
+	t_lab Labyrinthe;
+	//coordonnées joueur
+	Labyrinthe.playerX = 0;
+	Labyrinthe.playerY = 0;
+	// Numéro trésor
+	Labyrinthe.Next = 3;
+	// initialisation des tiles D'abord tout à zéro puis placement trésor etc
 		for(int i = 0; i<16 ; i++){
 			Labyrinthe.p_lab[i].tileItem = 0;
 			Labyrinthe.p_lab[i].tileN = 0;
@@ -95,7 +136,8 @@ t_lab Labyrinthe;
 	
 	
 
-
+	int a = PassageBas(3,Labyrinthe.p_lab);
+	printf("%d ",a);
 
 	//Fin
 	printf("ok \n");
