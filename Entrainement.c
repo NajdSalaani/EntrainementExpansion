@@ -78,8 +78,7 @@ p_lab[Y*4+X].tileItem = 1;
 
 //tresor
 for(int i = 0; i<16;i++){
-	if(p_lab[i].tileItem == Nbtresor){ p_lab[i].tileItem = -1 ; }
-	printf("%d ",p_lab[i].tileItem);	
+	if(p_lab[i].tileItem == Nbtresor){ p_lab[i].tileItem = -1 ; }	
 }
 
 //On peut ensuite procéder à la boucle principale
@@ -88,11 +87,21 @@ int indice = 1;
 
 
 	//Parcours pour un indice
-	for(int i = 0; i<16 , i ++){
-		if(p_lab[i] == indice ){ //La tuile est tel à l'indice voulu ?
+	for(int i = 0; i<16 ; i ++){
+		if(p_lab[i].tileItem == indice ){ //La tuile est elle à l'indice voulu ?
 			//La tuile est elle dans les coins 
 			//Coin Haut Gauche ?
 			if(i == 0){
+				//Passages possibles?
+				if(PassageBas(i,p_lab)){
+					//Tuile du trésor
+					
+					//Tuile Non visitée
+				}
+				if(PassageDroit(i,p_lab)){
+				
+				}
+				
 			
 			}
 			//Coin Haut Droit ?
