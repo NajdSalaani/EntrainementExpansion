@@ -81,6 +81,57 @@ for(int i = 0; i<16;i++){
 	if(p_lab[i].tileItem == Nbtresor){ p_lab[i].tileItem = -1 ; }
 	printf("%d ",p_lab[i].tileItem);	
 }
+
+//On peut ensuite procéder à la boucle principale
+
+int indice = 1;
+
+
+	//Parcours pour un indice
+	for(int i = 0; i<16 , i ++){
+		if(p_lab[i] == indice ){ //La tuile est tel à l'indice voulu ?
+			//La tuile est elle dans les coins 
+			//Coin Haut Gauche ?
+			if(){
+			
+			}
+			//Coin Haut Droit ?
+			else if(){
+			
+			}
+			//Coin Bas Gauche ?
+			else if(){
+			
+			}
+			//Coin Bas Droit ?
+			else if(){
+			
+			}
+			//Est elle simplement sur un bord
+			//Bord Droit ?
+			else if(){
+			
+			}
+			//Bord Gauche ?
+			else if(){
+			
+			}
+			//Bord Haut ?
+			else if(){
+			
+			}
+			//Bord Bas ?
+			else if(){
+			
+			}
+			//Cas Centre 
+			else {
+			
+			}
+			
+			
+		}
+	}
 }		
 	
 
