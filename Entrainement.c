@@ -18,7 +18,8 @@
 
 typedef struct {
 int tileN, tileE, tileS, tileW; //1 si mur et 0 si rien
-int tileItem; // numero item ou 0 si aucun 
+int tileItem;// numero item ou 0 si aucun
+int distance  
 
 } t_tile;
 
@@ -26,8 +27,9 @@ int tileItem; // numero item ou 0 si aucun
 
 typedef struct {
 t_tile p_lab[16]; //tableau de tuiles
-int playerX,playerY; //coordonnées du joueur (nous/notre bot)
-int Next; // numéro du prochain trésor du joueur
+int QuiJoue //0 ou 1
+int posJoueur[2] //indice des joueurs
+int Next[2]; // numéro du prochain trésor du joueur
 } t_lab;
 
 //Fonctions de verification d'un passage
@@ -94,18 +96,35 @@ int indice = 1;
 			if(i == 0){
 				//Passages possibles?
 				if(PassageBas(i,p_lab)){
-					//Tuile du trésor
-					
-					//Tuile Non visitée
+					//Tuile du trésor ?
+					if(p_lab[i+4].tileItem == -1){ return 1;}
+					//Tuile Non visitée ?
+					if(p_lab[i+4].tileItem == 0){ p_lab[i+4].tileItem = indice + 1 ; }
 				}
 				if(PassageDroit(i,p_lab)){
-				
+					//Tuile du trésor ?
+					if(p_lab[i+1].tileItem == -1){ return 1;}
+					//Tuile Non visitée ?
+					if(p_lab[i+1].tileItem == 0){ p_lab[i+1].tileItem = indice + 1 ; }
 				}
 				
 			
 			}
 			//Coin Haut Droit ?
 			else if(i == 3){
+				//Passages possibles?
+				if(PassageBas(i,p_lab)){
+					//Tuile du trésor ?
+					if(p_lab[i+4].tileItem == -1){ return 1;}
+					//Tuile Non visitée ?
+					if(p_lab[i+4].tileItem == 0){ p_lab[i+4].tileItem = indice + 1 ; }
+				}
+				if(PassageGauche(i,p_lab)){
+					//Tuile du trésor ?
+					if(p_lab[i-1].tileItem == -1){ return 1;}
+					//Tuile Non visitée ?
+					if(p_lab[i-1].tileItem == 0){ p_lab[i-1].tileItem = indice + 1 ; }
+				}
 			
 			}
 			//Coin Bas Gauche ?
@@ -143,7 +162,54 @@ int indice = 1;
 	}
 }		
 	
+int expansion2(p_lab* Labyrinthe){
+	//mettre tous les distancesdepart à -1
+	for(int i=0 ;i<16;i++){
+		Labyrinthe.p_lab[i].distance = -1;
+	}
+	//mettre tab joueur distance à 0
+	Labyrinthe.p_lab[Labyrinthe.PosJoeur[Labyrinthe.QuiJoue]].distance =0;
+	
+	int d=0;
+	
+	//Indice du trésor
+	int indiceTresor =0;
+	for(indiceTresor;indiceTresor<16;indiceTresor++){
+		if(Labyrinthe.p_lab[indiceTresor].tileItem == Labyrinthe.Next[Labyrinthe.QuiJoue]){
+			break;		
+		}
+	}
+	int compteur
+	
+	//Tant que pas arrivée au trésor
+	
+	while(Labyrinthe.p_lab[indiceTresor].distance == -1 ){
+		//Trouver tous les indices à distance d
+		compteur = 0
+		for(int i =0;i<16;i++){
+			if(Labyrinthe.p_lab[i].distance == d){
+				//Nord
+				if(PassageNord(i,Labyrinthe)){
+					if(Labyrinthe->p_lab[i-4] != -1)
+						Labyrinthe->p_lab[i-4] = d+1;
+						compteur ++ 
+					}
+				}	//Sud
+				
+			}
+		}
+		if(compteur == 0){ break; } //Pas de nouvel case atteinte
+	}
+	if(Labyrinthe.p_lab[indiceTresor].distance == -1 ){
+		return 0;
+	}
+	return 1
+	
+	//Ou bien return (Labyrinthe.p_lab[indiceTresor].distance != -1 ) 
+	
+	
 
+}
 int main(){
 
 	//Creation et initialisation du labyrinthe ( ce peut être une copie du labyrinthe pour ne pas le perdre lors de l'expansion)
@@ -211,7 +277,7 @@ int main(){
 		
 
 	int a =Expansion(Labyrinthe.p_lab,Labyrinthe.playerX,Labyrinthe.playerY,Labyrinthe.Next);
-
+	printf("%d ",a);
 	//Fin
 	printf("ok \n");
 	return 1;
