@@ -68,8 +68,20 @@ int PassageBas(int i , t_tile p_lab[16]){
 
 }
 
-		
-		
+//Fonction d'expansion qui retourne 1 si un chemin es trouvée et 0 sinon		
+int Expansion(t_tile p_lab[16],int X,int Y,int Nbtresor){
+
+//On réorganise d'abord le labyrinthe
+
+//Position du joueur
+p_lab[Y*4+X].tileItem = 1;
+
+//tresor
+for(int i = 0; i<16;i++){
+	if(p_lab[i].tileItem == Nbtresor){ p_lab[i].tileItem = -1 ; }
+	printf("%d ",p_lab[i].tileItem);	
+}
+}		
 	
 
 int main(){
@@ -134,10 +146,11 @@ int main(){
 		Labyrinthe.p_lab[9].tileW = 1;
 		Labyrinthe.p_lab[13].tileW = 1;
 	
-	
+//APPEL DE LA FONCTION EXPANSION 
 
-	int a = PassageBas(3,Labyrinthe.p_lab);
-	printf("%d ",a);
+		
+
+	int a =Expansion(Labyrinthe.p_lab,Labyrinthe.playerX,Labyrinthe.playerY,Labyrinthe.Next);
 
 	//Fin
 	printf("ok \n");
