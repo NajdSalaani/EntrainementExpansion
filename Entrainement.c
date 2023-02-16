@@ -92,36 +92,36 @@ int indice = 1;
 		if(p_lab[i] == indice ){ //La tuile est tel à l'indice voulu ?
 			//La tuile est elle dans les coins 
 			//Coin Haut Gauche ?
-			if(){
+			if(i == 0){
 			
 			}
 			//Coin Haut Droit ?
-			else if(){
+			else if(i == 3){
 			
 			}
 			//Coin Bas Gauche ?
-			else if(){
+			else if(i == 12){
 			
 			}
 			//Coin Bas Droit ?
-			else if(){
+			else if(i == 15){
 			
 			}
 			//Est elle simplement sur un bord
 			//Bord Droit ?
-			else if(){
+			else if((i+1)%4 == 0){
 			
 			}
 			//Bord Gauche ?
-			else if(){
+			else if(i%4 == 0){
 			
 			}
 			//Bord Haut ?
-			else if(){
+			else if(i<4){
 			
 			}
 			//Bord Bas ?
-			else if(){
+			else if(i>11){
 			
 			}
 			//Cas Centre 
